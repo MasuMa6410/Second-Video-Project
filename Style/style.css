@@ -11,13 +11,13 @@
 
 body {
   font-family: "Vazir" !important;
-  background: url(../Images/bg.jpg) no-repeat;
+  background: url(../Images/Images/bg.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 
 .dark .dark-bg-body-dark {
-  background: url(../Images/bg-dark.jpg) no-repeat;
+  background: url(../Images/Images/bg-dark.jpg) no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
