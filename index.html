@@ -47,21 +47,21 @@
           <h2 class="fw-bold mb-4"><span class="text-primary ">لورم ایپسوم</span> <span id="text"></span></h2>
           <p class="lh-lg">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.</p>
         </div>
-        <div class="row countdown justify-content-center my-5">
+        <div x-data="countdown" class="row countdown justify-content-center my-5">
           <div>
-            <h3 class="fw-bold">2</h3>
+            <h3 class="fw-bold" x-text="days"></h3>
             <h5 class="mb-0">روز</h5>
           </div>
           <div>
-            <h3 class="fw-bold">08</h3>
+            <h3 class="fw-bold" x-text="hours"></h3>
             <h5 class="mb-0">ساعت</h5>
           </div>
           <div>
-            <h3 class="fw-bold">12</h3>
+            <h3 class="fw-bold" x-text="minutes"></h3>
             <h5 class="mb-0">دقیقه</h5>
           </div>
           <div>
-            <h3 class="fw-bold">21</h3>
+            <h3 class="fw-bold" x-text="seconds"></h3>
             <h5 class="mb-0">ثانیه</h5>
           </div>
         </div>
@@ -88,24 +88,40 @@
             darkMode: false,
              init(){
               this.darkMode = localStorage.theme === 'dark' ? true : false
-              // if (localStorage.theme === 'dark') {
-              //   this.darkMode = true
-              // } else {
-              //    this.darkMode = false
-              // }
+              
               this.$watch('darkMode', (value)=> {
                 localStorage.theme = value ? 'dark' : 'light'
-                // if (value) {
-                //   localStorage.theme = 'dark'
-                // } else {
-                //   localStorage.theme = 'light'
-                // }
+                
               } )
              }
             
+        })),
+        Alpine.data('countdown', () => ({
+            days : '00',
+            hours :'00',
+            minutes :'00',
+            seconds :'00',
+             init(){
+              let endDate = new Data(2024, 11, 30).getTime();
+              setInterval(() => {
+                let nowDate = new Data().getTime();
+                let time = endDate - nowDate;
+                if (time >= 0) {
+                  this.days = this.format(Math.floor (time / (1000*60*60*24)));
+                  this.hours = this.format(Math.floor((time%(1000*60*60*24))/(1000*60*60)));
+                  this.minutes = this.format(Math.floor((time%(1000*60*60))/(1000*60)));
+                  this.seconds = this.format (Math.floor((time%(1000*60))/1000));
+                }
+              }, 1000)
+             
+             },
+              format(num) {
+                return num < 10 ? '0' + num : num ;
+              }
+            
         }))
     })
-</script>
+    </script>
     </head>
   </body>
 </html>
