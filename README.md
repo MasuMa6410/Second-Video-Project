@@ -23,7 +23,7 @@ Welcome to **webprog.io**, a simple yet effective web development project built 
 - Styling and design using CSS.
 - Responsiveness and layout optimization using Bootstrap.
 
-[Check out the live version here!](https://masuma6410.github.io/First-Video-Project/)
+[Check out the live version here!](https://masuma6410.github.io/Second-Video-Project/)
 
 This project serves as an initial step toward mastering web development, focusing on clean code and best practices.
 
